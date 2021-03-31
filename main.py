@@ -8,6 +8,7 @@ game_board = [{"count":masu,
 for idx in range(len(game_board)):
     game_board[idx]["price"]=game_board[idx]["base_price"]
 #count = マス目
+# コメント
 player_names=["A","B","C","D"]
 players=[{"money":1000,"thing":0,"position":0,"player_name":player_names[i]} for i in range(4)]
 
