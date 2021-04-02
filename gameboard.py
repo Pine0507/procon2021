@@ -1,10 +1,12 @@
 import numpy as np
 import players_util
+from config import Config
+config = Config()
 game_board = [{"count": masu,
                "price": 0,
                "base_price": np.random.randint(10*masu, 10*(masu+1))*10,
                "own_player": 0,
-               "level": 0} for masu in range(8)]
+               "level": 0} for masu in range(config.LEN_BOARD)]
 
 # 初期化処理
 for idx in range(len(game_board)):
@@ -61,12 +63,7 @@ def payment(player: dict, gameboard_idx: int):
     owner_property = players_util.players[idx_owner]
     owner_property["money"] += fee
     players_util.set_player(idx_owner, owner_property)
-    if is_bankruptcy(player, 1):
-        print("hasan")
-        import sys
-        sys.exit()
-    else:
-        return player
+    return is_bankruptcy(player, 1)
 
 
 def capital_increase(player: dict) -> dict:
@@ -100,3 +97,4 @@ def is_bankruptcy(player, cn):
         player["money"] += min(prices)
         player["thing"] -= game_board[prices.index(min(prices))]["price"]
         prices[prices.index(min(prices))] = 10**10
+    return player

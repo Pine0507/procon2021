@@ -24,7 +24,6 @@ while(cn < 1000):
         choise = player["player_ai"].choise(chance=chance)
         choise = True
         if choise:
-            print(chance == "buy")
             buy(player) if chance == "buy" else capital_increase(player)
     else:
         player = payment(player, i)
