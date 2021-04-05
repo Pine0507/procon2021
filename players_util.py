@@ -6,7 +6,7 @@ from config import Config
 cfg = Config()
 player_aies = [Player_1(), Player_2(), Player_3(), Player_4()]
 player_names = [player_ai.player_name for player_ai in player_aies]
-players = [{"money": 1000, "thing": 0, "position": 0,
+players = [{"money": 100000, "thing": 0, "position": 0,
             "player_name": player_names[i], "player_ai":player_ai} for i, player_ai in enumerate(player_aies)]
 
 
