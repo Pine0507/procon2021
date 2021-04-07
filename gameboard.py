@@ -4,17 +4,17 @@ from config import Config
 config = Config()
 game_board = [{"count": masu,
                "price": 0,
-               "base_price": np.random.randint(10*masu, 10*(masu+1))*10,
+               "base_price": np.random.randint(3*masu+1, 3*(masu+1))*10,
                "own_player": 0,
                "level": 0} for masu in range(config.LEN_BOARD)]
-
+bool_bankruptcy = False
 # 初期化処理
 for idx in range(len(game_board)):
     game_board[idx]["price"] = game_board[idx]["base_price"]
 
 
 levels = {
-    "fee_per": [0.1, 0.15, 0.25, 0.5],
+    "fee_per": [0.1, 0.4, 1.2, 2.4],
     "sale_per": [0.5 for _ in range(4)]}
 
 
@@ -82,7 +82,7 @@ def capital_increase(player: dict) -> dict:
 
 
 def is_bankruptcy(player, cn):
-    global game_board
+    global game_board, bool_bankruptcy
     players_belong = player["player_name"]
     prices = [game_board[idx]["price"]*0.5 if game_board[idx]["own_player"]
               == players_belong else 10**10 for idx in range(len(game_board))]
@@ -90,9 +90,8 @@ def is_bankruptcy(player, cn):
         print(player)
         if min(prices) == 10**10:
             print("hasan")
-            import sys
-            sys.exit()
-            return True
+            bool_bankruptcy = True
+            return player
         game_board[prices.index(min(prices))]["own_player"] = 0
         player["money"] += min(prices)
         player["thing"] -= game_board[prices.index(min(prices))]["price"]
