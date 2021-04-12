@@ -89,7 +89,6 @@ def is_bankruptcy(player, cn):
     while(player["money"] < 0):
         print(player)
         if min(prices) == 10**10:
-            print("hasan")
             bool_bankruptcy = True
             return player
         game_board[prices.index(min(prices))]["own_player"] = 0

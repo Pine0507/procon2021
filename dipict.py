@@ -42,10 +42,6 @@ def depict_player(position_idxes: List, players_idx: int):
         (y0 + 1.5)*height/max_board_len,
         text=text, justify='center', tag="text_"+str(players_idx))
 
-
-for player_idx, position_idxes in enumerate([[1, 1], [5, 1], [1, 6], [5, 6]]):
-    depict_player(position_idxes, player_idx)
-
     # 表示する情報：売値、価格（最初）
     # 一回増資したら：増資額、価格
 
@@ -142,7 +138,6 @@ for idx_board, gameboard_idx in enumerate(game_board_idxes):
     y, x = gameboard_idx // 10, gameboard_idx % 10
     create_rectangle(x, y)
     create_text(x, y, idx_board)
-
 player_img_position = [(2.25, 2.5), (6.25, 2.5), (2.25, 7.5), (6.25, 7.5)]
 player_imgs = []
 for idx_player, player in enumerate(players_util.players):
@@ -153,3 +148,16 @@ for idx_player, player in enumerate(players_util.players):
     x, y = player_img_position[idx_player]
     canvas.create_image(x*width/max_board_len, y *
                         height/max_board_len, image=image)
+
+
+def dipict_player_info():
+    for player_idx, position_idxes in enumerate([[1, 1], [5, 1], [1, 6], [5, 6]]):
+        depict_player(position_idxes, player_idx)
+    for idx_player, player in enumerate(players_util.players):
+        create_player(0, idx_player)
+        image = Image.open(player["player_ai"].image).resize((100, 100))
+        player_imgs.append(ImageTk.PhotoImage(image))
+        image = player_imgs[idx_player]
+        x, y = player_img_position[idx_player]
+        canvas.create_image(x*width/max_board_len, y *
+                            height/max_board_len, image=image)
