@@ -22,7 +22,8 @@ def game_main():
     sugoroku = np.random.randint(1, 10, 3)
     while(len(set(sugoroku)) < 3):
         sugoroku = np.random.randint(1, 10, 3)
-    sugoroku = players_util.players[i]["player_ai"].choise_roll(sugoroku)
+    sugoroku = sugoroku[players_util.players[i]
+                        ["player_ai"].choise_roll(sugoroku)]
     player = players_util.move(players_util.decide_player(i), sugoroku)
     # TODO:プレイやー移動描画
     dipict.delete_player(player)

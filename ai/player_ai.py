@@ -8,7 +8,7 @@ class Player:
         self.image = "./img/original.gif"
 
     def choise_roll(self, rolls):
-        return rolls[np.random.randint(0, 2)]
+        return np.random.randint(0, 2)
 
     def choise(self, chance):
         if random.random() < 0.5:
