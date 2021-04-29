@@ -1,5 +1,5 @@
-from .. import players_util
-from .. import gameboard
+import players_util
+import gameboard
 
 
 def gameboard_info():
