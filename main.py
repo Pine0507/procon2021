@@ -6,6 +6,7 @@ import players_util
 from dipict import root
 import time
 from copy import deepcopy
+import random
 
 i = 0
 cn = 0
@@ -17,9 +18,10 @@ def game_main():
     global i, cn, bankruptcy_turn
     i %= 4
     dipict.announce(cn)
-    sugoroku = np.random.randint(1, 10, 3)
-    while(len(set(sugoroku)) < 3):
-        sugoroku = np.random.randint(1, 10, 3)
+    # sugoroku = np.random.randint(1, 10, 3)
+    # while(len(set(sugoroku)) < 3):
+    #     sugoroku = np.random.randint(1, 10, 3)
+    sugoroku = random.sample(list(range(1,10)), 3)
     tmp_sugoroku = deepcopy(sugoroku)
     sugoroku = sugoroku[players_util.players[i]
                         ["player_ai"].choise_roll(tmp_sugoroku)]
