@@ -36,10 +36,8 @@ def game_main():
     chance, choise = "", False
     if is_my_property(player) or is_vacent_property(player):
         chance = "capital_increase" if is_my_property(player) else "buy"
-        # choise = True
         # 出目も渡す必要あり
         choise = player["player_ai"].choise(chance=chance)
-        choise = True
         if choise:
             buy(player) if chance == "buy" else capital_increase(player)
     else:
