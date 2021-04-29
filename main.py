@@ -8,6 +8,7 @@ import pdb
 from dipict import root
 import time
 from PIL import Image, ImageTk
+from copy import deepcopy
 
 i = 0
 cn = 0
@@ -22,8 +23,9 @@ def game_main():
     sugoroku = np.random.randint(1, 10, 3)
     while(len(set(sugoroku)) < 3):
         sugoroku = np.random.randint(1, 10, 3)
+    tmp_sugoroku = deepcopy(sugoroku)
     sugoroku = sugoroku[players_util.players[i]
-                        ["player_ai"].choise_roll(sugoroku)]
+                        ["player_ai"].choise_roll(tmp_sugoroku)]
     player = players_util.move(players_util.decide_player(i), sugoroku)
     # TODO:プレイやー移動描画
     dipict.delete_player(player)
@@ -44,9 +46,9 @@ def game_main():
         player = payment(player, i)
 
     for idx, ip in enumerate(players_util.players):
-        print(str(ip)+"*" if idx == i else ip)
+        print(str(ip) + "*" if idx == i else ip)
     for idx, game_board_ in enumerate(game_board):
-        print(str(game_board_)+"*" if idx ==
+        print(str(game_board_) + "*" if idx ==
               player["position"] else game_board_)
     players_util.set_player(i, player)
     # TODO:支払い後の描画

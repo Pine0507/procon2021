@@ -1,10 +1,13 @@
 import numpy as np
 import players_util
 from config import Config
+from copy import deepcopy
+
+
 config = Config()
 game_board = [{"count": masu,
                "price": 0,
-               "base_price": np.random.randint(3*masu+1, 3*(masu+1))*10,
+               "base_price": np.random.randint(1, 100)*10,
                "own_player": 0,
                "level": 0} for masu in range(config.LEN_BOARD)]
 bool_bankruptcy = False
@@ -19,7 +22,8 @@ levels = {
 
 
 def gameboard_info():
-    return {"board": game_board, "levels": levels}
+    copied_gameboard_info = deepcopy({"board": game_board, "levels": levels})
+    return copied_gameboard_info
 
 
 def get_game_pass(player):
