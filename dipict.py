@@ -57,8 +57,8 @@ def create_rectangle(x: int, y: int, color='gray') -> None:
 
 def create_text(x: int, y: int, idx_board: int) -> None:
     fee_per = levels["fee_per"][game_board[idx_board]["level"]]
-    text = "利用料：{0}\n値段：{1}".format(
-        int(game_board[idx_board]["price"]*fee_per), int(game_board[idx_board]["price"]))
+    text = "利用料：{0}\n値段：{1}\nレベル：{2}".format(
+        int(game_board[idx_board]["price"]*fee_per), int(game_board[idx_board]["price"]), int(game_board[idx_board]["level"]))
     canvas.create_text((x+0.5)*width/max_board_len, (y+0.7)
                        * height/max_board_len, text=text, justify='center')
 

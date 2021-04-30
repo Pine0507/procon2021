@@ -24,7 +24,7 @@ class Player:
         my_player = self.get_myplayer()
         my_position = my_player["position"]
 
-        # boardにはそれぞれのマスのprice(値段)，base_price(もとの値段)
+        # gameboard_info()["board"]
         # board には下の感じで入っています
         #  List[ Dict{ "count": マス目， "price": 物件の値段,
         #              "base_price":もとの値段, "own_player": 0 or プレイヤー名, "level": 物件レベル }]
