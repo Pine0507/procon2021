@@ -17,7 +17,7 @@ for idx in range(len(game_board)):
 
 
 levels = {
-    "fee_per": [0.1, 0.4, 1.2, 2.4],
+    "fee_per": [0.1, 0.4, 0.9, 1.8],
     "sale_per": [0.5 for _ in range(4)]}
 
 
@@ -74,7 +74,7 @@ def capital_increase(player: dict) -> dict:
     global game_board
     player_position = get_player_position(player)
     game_mass = get_game_pass(player)
-    cap_fee = game_mass["base_price"]//2
+    cap_fee = game_mass["base_price"]
     if player["money"] < cap_fee or game_board[player_position]["level"] == len(levels["fee_per"])-1:
         pass
     else:

@@ -28,8 +28,8 @@ class Player:
         # board には下の感じで入っています
         #  List[ Dict{ "count": マス目， "price": 物件の値段,
         #              "base_price":もとの値段, "own_player": 0 or プレイヤー名, "level": 物件レベル }]
-        board = gameboard_info()["board"]
-        now_position_price = board[my_position]["price"] 
+
+
         # gameboard_info()["levels"]には下のような感じで入っています
         #  levels = Dict {"fee_per": List[利用料比率×4個],"sale_per": 売却比率(0.5)}
 

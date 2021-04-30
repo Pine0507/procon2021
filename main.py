@@ -18,9 +18,6 @@ def game_main():
     global i, cn, bankruptcy_turn
     i %= 4
     dipict.announce(cn)
-    # sugoroku = np.random.randint(1, 10, 3)
-    # while(len(set(sugoroku)) < 3):
-    #     sugoroku = np.random.randint(1, 10, 3)
     sugoroku = random.sample(list(range(1,10)), 3)
     tmp_sugoroku = deepcopy(sugoroku)
     sugoroku = sugoroku[players_util.players[i]
