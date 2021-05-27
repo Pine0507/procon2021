@@ -18,7 +18,7 @@ def game_main():
     global i, cn, bankruptcy_turn
     i %= 4
     dipict.announce(cn)
-    sugoroku = random.sample(list(range(1,10)), 3)
+    sugoroku = random.sample(list(range(1, 10)), 3)
     tmp_sugoroku = deepcopy(sugoroku)
     sugoroku = sugoroku[players_util.players[i]
                         ["player_ai"].choise_roll(tmp_sugoroku)]
@@ -39,11 +39,6 @@ def game_main():
     else:
         player = payment(player, i)
 
-    for idx, ip in enumerate(players_util.players):
-        print(str(ip) + "*" if idx == i else ip)
-    for idx, game_board_ in enumerate(game_board):
-        print(str(game_board_) + "*" if idx ==
-              player["position"] else game_board_)
     players_util.set_player(i, player)
     # TODO:支払い後の描画
     dipict.canvas.delete('all')
